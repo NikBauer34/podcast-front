@@ -1,5 +1,5 @@
 "use client"
-import { FileUpload, TextToSpeech } from "@/entities";
+import { FileUpload, generateAudio, getAudio } from "@/entities";
 import { Button, Label, Textarea, useToast } from "@/shared";
 import axios from "axios";
 import { Loader } from "lucide-react";
@@ -36,63 +36,37 @@ const useGeneratePodcast = ({
     }
     try {
       setGeneratingProcess('Генерируем аудио')
-      const res = await axios({
-        method: 'POST',
-        url: 'https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize?text="Хайхай"&voice=ermil&format=mp3'
-      })
-      // let fileReader = new FileReader()
-      // console.log(Buffer.from(blob))
-      // let new_blob = new Blob([new Uint8Array(blob).buffer], {type: 'audio/mpeg'})
-      // console.log(URL.createObjectURL(new_blob))
-      
-      // console.log(URL.createObjectURL(file))
-      // let blob = new Blob([file], {type: 'audio/mpeg'})
-      // console.log(URL.createObjectURL(blob))
-      // if (typeof file == 'string') {
-      //   setIsGenerating(false)
-      //   setGeneratingProcess('')
-      //   toast({title: `Ошибка: ${file}`, variant: 'destructive'})
-      //   return
-      // }
+      let data = await generateAudio(voiceType, voicePrompt)
+      console.log('data')
+      console.log(data)
+      if (typeof data == 'string') {
+        setIsGenerating(false)
+        setGeneratingProcess('')
+        toast({title: `Ошибка: ${data}`, variant: 'destructive'})
+        return
+      }
+      console.log(data)
       setGeneratingProcess('Загружаем аудио')
-      
-      // const blob = new Blob([file], {type: 'audio/mpeg'})
-      // console.log(URL.createObjectURL(blob))
-      // const new_blob = new Blob([new Uint8Array([...file].map(Number))], {
-      //   type: 'audio/mpeg'
-      // })
-      // const wow_blob = new Blob([Buffer.from(file)], {type: 'audio/mpeg'})
-      // console.log(URL.createObjectURL(new_blob))
-      // console.log(URL.createObjectURL(wow_blob))
-      // console.log(blob)
-      // let fileName = `podcast-${uuidv4()}.mp3`
-      // const new_file = new File([blob], fileName, {type: 'audio/mpeg'})
-
-      // console.log(new_file)
-      // console.log(URL.createObjectURL(blob))
-      // console.log(file)
-
-      // let formdata = new FormData()
-      // formdata.append('file', new_file)
-      // const data = await FileUpload(formdata)
-      // if (typeof data == 'string') {
-      //   setIsGenerating(false)
-      //   setGeneratingProcess('')
-      //   toast({title: `Ошибка: ${file}`, variant: 'destructive'})
-      //   return
-      // }
-      // setAudio(data.file_path)
+      let audio = await getAudio(data.mp3)
+      if (typeof audio == 'string') {
+        setIsGenerating(false)
+        setGeneratingProcess('')
+        toast({title: `Ошибка: ${audio}`, variant: 'destructive'})
+        return
+      }
+      setAudio(audio.file_path)
       setIsGenerating(false)
       setGeneratingProcess('')
-      // toast({
-      //   title: 'Подкаст успешно сгенерирован'
-      // })
+      toast({
+        title: 'Подкаст успешно сгенерирован'
+      })
     } catch (e: any) {
       toast({
         title: `Ошибка: ${e}`,
         variant: 'destructive'
       })
       setIsGenerating(false)
+      setGeneratingProcess('')
     }
   }
 

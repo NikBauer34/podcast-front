@@ -1,4 +1,4 @@
-import { IPodcast, CreatePodcast } from "./Podcast/model";
+import { IPodcast } from "./Podcast/model";
 import { IUser, CreateUser } from "./User/model";
 import signin from "./User/api/login.action";
 import DestructiveAlert from "./User/ui/DestructiveAlert";
@@ -9,10 +9,14 @@ import register from "./User/api/register.action";
 import { publicLinks, privateLinks } from "./User/constants/headerLinks";
 import SignInButton from "./User/components/SignInButton";
 import SignOutButton from "./User/components/SignOutButton";
-import TextToSpeech from "./Podcast/api/text-to-speech.action";
+import generateAudio from "./Podcast/api/generate-audio.action";
+import generateImage from "./Podcast/api/generate-image.action";
+import getAudio from "./Podcast/api/get-audio.action";
+import getImage from "./Podcast/api/get-image.action";
+import ImageUploader from "./Podcast/components/ImageUploader";
+import CreatePodcast from "./Podcast/api/create-podcast.action";
 export {
   type IPodcast,
-  type CreatePodcast,
   type IUser,
   type CreateUser,
   signin,
@@ -25,5 +29,10 @@ export {
   privateLinks,
   SignInButton,
   SignOutButton,
-  TextToSpeech
+  generateAudio,
+  generateImage,
+  getAudio,
+  getImage,
+  ImageUploader,
+  CreatePodcast
 }

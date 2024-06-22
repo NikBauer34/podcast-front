@@ -14,15 +14,15 @@ export interface IPodcast {
   views: number
   type: 'private' | 'public'
 }
-export interface CreatePodcast {
-  podcastTitle: string
-  podcastDescription: string
-  audioUrl: string
-  imageUrl: string
-  voicePrompt: string
-  imagePrompt: string
-  voiceType: string
-  audioDuration: number
-  views: number
-  type: 'private' | 'public'
-}
+// export interface CreatePodcast {
+//   podcastTitle: string
+//   podcastDescription: string
+//   audioUrl: string
+//   imageUrl: string
+//   voicePrompt: string
+//   imagePrompt: string
+//   voiceType: string
+//   audioDuration: number
+//   views: number
+//   type: 'private' | 'public'
+// }

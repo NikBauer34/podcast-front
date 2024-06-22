@@ -1,13 +1,15 @@
 "use client"
 
-import { TextToSpeech } from "@/entities"
-import { GeneratePodcast } from "@/features"
-import { Badge, BaseInput, Button, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea, cn, useInputValidation, useToast } from "@/shared"
+import { CreatePodcast } from "@/entities"
+import { GeneratePodcast, GenerateThumbnail } from "@/features"
+import { Badge, BaseInput, Button, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SubmitButton, Textarea, cn, useInputValidation, useToast } from "@/shared"
+import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 let voiceCategories = ['alena', 'ermil', 'filipp', 'jane', 'madirus', 'marina', 'omazh', 'zahar']
 export default function PodcastForm() {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
   const [imagePrompt, setImagePrompt] = useState('')
   const [imageUrl, setImageUrl] = useState('')
   const [audioUrl, setAudioUrl] = useState('')
@@ -15,8 +17,39 @@ export default function PodcastForm() {
   const [voiceType, setVoiceType] = useState<string | null>(null)
   const [voicePrompt, setVoicePrompt] = useState('')
   const {toast} = useToast()
+  const {data} = useSession()
   let titleInput = useInputValidation('', {isEmpty: {value: true, message: 'Название не должно быть пустым'}})
   let descriptionInput = useInputValidation('', {isEmpty: {value: true, message: 'Описание не должно быть пустым'}})
+  async function onSubmit(e: any) {
+    e.preventDefault()
+    try {
+      const podcast = await CreatePodcast({
+        podcastTitle: titleInput.value,
+        podcastDescription: descriptionInput.value,
+        audioUrl,
+        imageUrl,
+        voiceType: voiceType!,
+        voicePrompt,
+        imagePrompt,
+        views: 0,
+        audioDuration,
+        refresh: data?.user?.accessToken,
+        type: 'public'
+      })
+      console.log(podcast)
+      if (typeof podcast == 'string') {
+        toast({
+          title: `Ошибка: ${podcast}`
+        })
+        return
+      }
+    } catch (e: any) {
+      toast({
+        title: `Ошибка: ${e}`
+      })
+      return
+    }
+  }
   return (
     <section className="mt-10 flex flex-col">
       <h1 className="text-20 font-bold text-white-1">Создать Подкаст</h1>
@@ -68,6 +101,15 @@ export default function PodcastForm() {
             setAudioDuration={setAudioDuration}
             setVoicePrompt={setVoicePrompt}
           />
+          <GenerateThumbnail
+            setImage={setImageUrl}
+            image={imageUrl}
+            imagePrompt={imagePrompt}
+            setImagePrompt={setImagePrompt}
+          />
+          <div className="mt-10 w-full">
+            <SubmitButton type="submit" className="w-full" loading={isLoading} submitText="Загружаем" text="Опубликуй подкаст" disabled={!titleInput.isInputValid || !descriptionInput.isInputValid || !voiceType || !audioUrl || !imageUrl || !data?.user} onClick={onSubmit}/>
+          </div>
         </div>
       </form>
     </section>
