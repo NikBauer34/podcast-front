@@ -5,11 +5,10 @@ import { Badge, BaseInput, BasePasswordInput, Button, CardContent, CardFooter, I
 import { Loader, Loader2 } from "lucide-react"
 import { signIn } from "next-auth/react"
 import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { SyntheticEvent, useEffect, useState } from "react"
 
 export default function UserAuthForm() {
-  const searchParams = useSearchParams()
   let niknameInput = useInputValidation('', {isEmpty: {value: true, message: 'Никнейм не может быть пустым'}, minLength: {value: 3, message: 'Никнейм не может быть меньше трех символов'}, maxLength: {value: 12, message: 'Никнейм не может быть больше 12 символов'}})
   let passwordInput = useInputValidation('', {isEmpty: {value: true, message: 'Пароль не может быть пустым'}, minLength: {value: 3, message: 'Пароль не может быть меньше трех символов'}, maxLength: {value: 12, message: 'Пароль не может быть больше 12 символов'}})
   let [loading, setLoading] = useState(false)

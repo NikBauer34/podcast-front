@@ -5,11 +5,10 @@ import { Badge, BaseInput, BasePasswordInput, Button, CardContent, CardFooter, I
 import { Loader, Loader2 } from "lucide-react"
 import { signIn } from "next-auth/react"
 import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { ChangeEvent, SyntheticEvent, useEffect, useRef, useState } from "react"
 
 export default function UserRegisterForm() {
-  const searchParams = useSearchParams()
   let niknameInput = useInputValidation('', {isEmpty: {value: true, message: 'Никнейм не может быть пустым'}, minLength: {value: 3, message: 'Никнейм не может быть меньше трех символов'}, maxLength: {value: 12, message: 'Никнейм не может быть больше 12 символов'}})
   let passwordInput = useInputValidation('', {isEmpty: {value: true, message: 'Пароль не может быть пустым'}, minLength: {value: 3, message: 'Пароль не может быть меньше трех символов'}, maxLength: {value: 12, message: 'Пароль не может быть больше 12 символов'}})
   let emailInput = useInputValidation('', {isEmail: {value: false, message: 'Напиши нормальную почту'}})
