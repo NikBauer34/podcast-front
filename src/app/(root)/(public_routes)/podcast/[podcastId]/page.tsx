@@ -9,7 +9,7 @@ export default async function PodcastDetails({ params: {podcastId}}: {params: {p
   const podcast = await getOnePodcast(podcastId)
   if (typeof podcast == 'string') {
     return (
-      <h1 className="basic-label">Не найден подкаст</h1>
+      <h1 className="basic-label">Не найден подкаст</h1>//h
     )
   }
   const similarPodcasts = await getSimilarPodcasts(podcast.voiceType, podcast._id)
