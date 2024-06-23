@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { deletePodcast } from "@/entities"
-import { Button, DeleteLogo, PlayLogo, ThreeDotsLogo, useToast } from "@/shared"
+import { Button, DeleteLogo, PlayLogo, ThreeDotsLogo, useAudio, useToast } from "@/shared"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -26,7 +26,7 @@ export default function PodcastDetailPlayer({
 }) {
   const router = useRouter()
   const {data} = useSession()
-  // const {setAudio} = useAudio()
+  const {setAudio} = useAudio()
   const { toast } = useToast()
   const [isDeleting, setIsDeleting] = useState(false)
   const handleDelete = async () => {
@@ -43,7 +43,13 @@ export default function PodcastDetailPlayer({
     router.push('/')
   }
   const handlePlay = () => {
-    //setAudio
+    setAudio({
+      title: podcastTitle,
+      audioUrl,
+      imageUrl,
+      author,
+      podcastId
+    })
   }
   return (
     <div className="mt-6 flex w-full justify-between max-md:justify-center">

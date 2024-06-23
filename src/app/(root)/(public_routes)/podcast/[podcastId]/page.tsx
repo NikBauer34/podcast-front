@@ -1,7 +1,9 @@
+export const dynamic = "force-dynamic";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-import { getOnePodcast, getSimilarPodcasts } from "@/entities"
+import { getOnePodcast, getSimilarPodcasts, updateViews } from "@/entities"
 import { PodcastItem } from "@/widgets"
 import { getServerSession } from "next-auth"
+import { unstable_noStore } from "next/cache";
 
 export default async function PodcastDetails({ params: {podcastId}}: {params: {podcastId: string}}) {
   const session = await getServerSession(authOptions)

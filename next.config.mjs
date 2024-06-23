@@ -5,7 +5,12 @@ const nextConfig = {
       protocol: 'https',
       hostname: 'unilib-storage.storage.yandexcloud.net',
       port: ''
-    }]
+    },
+  {
+    protocol: 'https',
+    hostname: 'stellard.ru',
+    port: ''
+  }]
   },
   eslint: {
     ignoreDuringBuilds: true

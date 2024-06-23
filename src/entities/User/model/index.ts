@@ -4,12 +4,12 @@ export interface IUser {
   email: string
   imageUrl: string
   _id: string
-  nickname: string
+  nikname: string
 }
 export interface CreateUser {
   email: string
   imageUrl: string
-  nickname: string
+  nikname: string
 }
 export interface LoginData {
   accessToken: JWT,

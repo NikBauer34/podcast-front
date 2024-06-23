@@ -89,7 +89,6 @@ export default function GeneratePodcast({
   setVoicePrompt: Dispatch<SetStateAction<string>>
 }) {
   const {isGenerating, generatePodcast, GeneratingProcess} = useGeneratePodcast({setAudio, voicePrompt, voiceType})
-
   return (
     <div>
       <div className="flex flex-col gap-2.5">

@@ -15,7 +15,7 @@ export default function PodcastItem({
     <section className="flex w-full flex-col">
       <header className="mt-9 flex items-center justify-between">
         <h1 className="text-20 font-bold text-white-1">
-          Currenty Playing
+          Сейчас играет
         </h1>
         <figure className="flex gap-3">
           <Image

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "@/shared";
+import { AudioProvider, AuthProvider } from "@/shared";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en">
-        <body className={manrope.className}>{children}</body>
+        <AudioProvider>
+          <body className={manrope.className}>{children}</body>
+        </AudioProvider>
       </html>
     </AuthProvider>
   );

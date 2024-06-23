@@ -21,6 +21,12 @@ import deletePodcast from "./Podcast/api/delete-podcast.action";
 import isOwner from "./Podcast/api/is-owner.action";
 import getSimilarPodcasts from "./Podcast/api/get-similar-podcasts";
 import getOnePodcast from "./Podcast/api/get-one-podcast";
+import getTopPodcasters from "./Podcast/api/get-top-podcasters";
+import getUserData from "./User/api/get-user-data";
+import updateViews from "./Podcast/api/updateViews.action";
+import getPodcastsByUser from "./Podcast/api/get-podcasts-by-user";
+import getUserById from "./User/api/get-by-id";
+import ProfileCard from "./User/components/ProfileCard";
 export {
   type IPodcast,
   type IUser,
@@ -46,5 +52,11 @@ export {
   deletePodcast,
   isOwner,
   getOnePodcast,
-  getSimilarPodcasts
+  getSimilarPodcasts,
+  getTopPodcasters,
+  getUserData,
+  updateViews,
+  getPodcastsByUser,
+  getUserById,
+  ProfileCard
 }

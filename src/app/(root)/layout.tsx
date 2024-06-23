@@ -1,7 +1,8 @@
-import { LeftSidebarWrapper } from "@/widgets";
+import { LeftSidebarWrapper, MobileNav, RightSidebarWrapper } from "@/widgets";
 import { ReactNode } from "react";
 import Image from 'next/image'
 import { MainLogo, Toaster } from "@/shared";
+import { PodcastPlayer } from "@/features";
 export default async function RootLayout({children}: {children: ReactNode}) {
   return (
     <div className="relative flex flex-col overflow-y-scroll no-scrollbar">
@@ -17,15 +18,18 @@ export default async function RootLayout({children}: {children: ReactNode}) {
                 height={30}
                 alt="main logo"
               />
+              <MobileNav />
             </div>
-            <div className="flex flex-col md:pb-14">
+            <div className="flex flex-col">
             </div>
             
           </div>
           <Toaster />
           {children}
         </section>
+        <RightSidebarWrapper />
       </main>
+      <PodcastPlayer />
     </div>
   )
 }

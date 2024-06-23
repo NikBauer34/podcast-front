@@ -7,6 +7,7 @@ import GenerateThumbnail from "./components/GenerateThumbnail";
 import EmptyState from "./components/EmptyState";
 import Searchbar from "./components/Searchbar";
 import PodcastDetailPlayer from "./components/PodcastDetailPlayer";
+import PodcastPlayer from "./components/PodcastPlayer";
 export {
   SignedIn,
   SignedOut,
@@ -16,5 +17,6 @@ export {
   GenerateThumbnail,
   EmptyState,
   Searchbar,
-  PodcastDetailPlayer
+  PodcastDetailPlayer,
+  PodcastPlayer
 }

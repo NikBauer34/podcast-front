@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, LoaderSpinner, MainLogo, cn } from "@/shared"
+import { Button, LoaderSpinner, MainLogo, cn, useAudio } from "@/shared"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
@@ -9,10 +9,10 @@ import { signOut } from "next-auth/react"
 export default function LeftSidebar({status}: {status: 'authenticated' | 'unauthenticated' | 'loading'}) {
   const pathname = usePathname()
   const router = useRouter()
-  let audio: Record<string, any> = {}
+  let {audio} = useAudio()
   return (
-    <section className={cn('left_sidebar h-[calc(100vh-5px)]', {
-      'h-[calc(100vh-140px)]': audio?.audioUrl
+    <section className={cn('left_sidebar h-[calc(100vh-0px)]', {
+      'h-[calc(100vh-15px)]': audio?.audioUrl
     })}>
       <nav className="flex flex-col gap-6 w-[200px] items-start">
         <Link href='/' className="cursor-pointer items-center gap-3 pb-10 max-lg:justify-center flex md:flex-row">
@@ -38,7 +38,6 @@ export default function LeftSidebar({status}: {status: 'authenticated' | 'unauth
           </Link>
         })}
         {status == 'loading' && <div className="flex items-center justify-center w-full h-full"><LoaderSpinner className="self-center"/></div>}
-        <h1>{status}</h1>
       </nav>
       {status == 'authenticated' &&
         <SignOutButton />

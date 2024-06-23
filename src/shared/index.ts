@@ -48,6 +48,25 @@ import PlayLogo from './icons/Play.svg'
 import ThreeDotsLogo from './icons/three-dots.svg'
 import DeleteLogo from './icons/delete.svg'
 import HeadPhoneLogo from './icons/headphone.svg'
+import AudioProvider, {useAudio} from "./lib/providers/AudioProvider";
+import { formatTime } from "./lib/formatTime";
+import { Progress } from "./ui/progress";
+import Player1Logo from './images/player1.png'
+import ReverseLogo from './icons/reverse.svg'
+import PauseLogo from './icons/Pause.svg'
+import ForwardLogo from './icons/forward.svg'
+import UnmuteLogo from './icons/unmute.svg'
+import MuteLogo from './icons/mute.svg'
+import RightArrowLogo from './icons/right-arrow.svg'
+import Header from "./kit/Header";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from './ui/sheet'
+import HamburgerLogo from './icons/hamburger.svg'
+import VerifiedLogo from './icons/verified.svg'
 export {
   $api,
   useDebounce,
@@ -94,5 +113,23 @@ export {
   PlayLogo,
   ThreeDotsLogo,
   DeleteLogo,
-  HeadPhoneLogo
+  HeadPhoneLogo,
+  AudioProvider,
+  useAudio,
+  formatTime,
+  Progress,
+  Player1Logo,
+  ReverseLogo,
+  PauseLogo,
+  ForwardLogo,
+  UnmuteLogo,
+  MuteLogo,
+  RightArrowLogo,
+  Header,
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+  HamburgerLogo,
+  VerifiedLogo
 }
