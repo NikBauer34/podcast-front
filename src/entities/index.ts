@@ -15,6 +15,12 @@ import getAudio from "./Podcast/api/get-audio.action";
 import getImage from "./Podcast/api/get-image.action";
 import ImageUploader from "./Podcast/components/ImageUploader";
 import CreatePodcast from "./Podcast/api/create-podcast.action";
+import PodcastCard from "./Podcast/components/PodcastCard";
+import getByTitle from "./Podcast/api/get-by-title";
+import deletePodcast from "./Podcast/api/delete-podcast.action";
+import isOwner from "./Podcast/api/is-owner.action";
+import getSimilarPodcasts from "./Podcast/api/get-similar-podcasts";
+import getOnePodcast from "./Podcast/api/get-one-podcast";
 export {
   type IPodcast,
   type IUser,
@@ -34,5 +40,11 @@ export {
   getAudio,
   getImage,
   ImageUploader,
-  CreatePodcast
+  CreatePodcast,
+  PodcastCard,
+  getByTitle,
+  deletePodcast,
+  isOwner,
+  getOnePodcast,
+  getSimilarPodcasts
 }

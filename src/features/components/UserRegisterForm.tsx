@@ -25,8 +25,9 @@ export default function UserRegisterForm() {
     let formdata = new FormData()
     formdata.append('file', file)
     let filename = await FileUpload(formdata)
+    console.log(filename)
     if (typeof filename != 'string') {
-      setImageUrl(filename.file_path)
+      setImageUrl(filename?.file_path)
     } else {
       alert(filename)
     }

@@ -42,6 +42,12 @@ import {
 } from './ui/select'
 import LoaderSpinner from './kit/LoaderSpinner'
 import { Textarea } from "./ui/textarea";
+import SearchLogo from './icons/search.svg'
+import EmptyLogo from './icons/emptyState.svg'
+import PlayLogo from './icons/Play.svg'
+import ThreeDotsLogo from './icons/three-dots.svg'
+import DeleteLogo from './icons/delete.svg'
+import HeadPhoneLogo from './icons/headphone.svg'
 export {
   $api,
   useDebounce,
@@ -82,5 +88,11 @@ export {
   SelectTrigger,
   SelectValue,
   Textarea,
-  LoaderSpinner
+  LoaderSpinner,
+  SearchLogo,
+  EmptyLogo,
+  PlayLogo,
+  ThreeDotsLogo,
+  DeleteLogo,
+  HeadPhoneLogo
 }

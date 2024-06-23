@@ -23,6 +23,7 @@ export default function PodcastForm() {
   async function onSubmit(e: any) {
     e.preventDefault()
     try {
+      setIsLoading(true)
       const podcast = await CreatePodcast({
         podcastTitle: titleInput.value,
         podcastDescription: descriptionInput.value,
@@ -36,14 +37,18 @@ export default function PodcastForm() {
         refresh: data?.user?.accessToken,
         type: 'public'
       })
-      console.log(podcast)
       if (typeof podcast == 'string') {
+        setIsLoading(false)
         toast({
           title: `Ошибка: ${podcast}`
         })
         return
       }
+      toast({title: 'Подкаст создан'})
+      setIsLoading(false)
+      router.push('/podcast/' + podcast._id)
     } catch (e: any) {
+      setIsLoading(false)
       toast({
         title: `Ошибка: ${e}`
       })
