@@ -17,6 +17,7 @@ export default function UserRegisterForm() {
   let [imageUrl, setImageUrl] = useState('')
   let [imageLoading, setImageLoading] = useState(false)
   let {toast} = useToast()
+  let [isHidedImage, setIsHidedImage] = useState(false)
   let imageRef = useRef<HTMLInputElement>(null)
   let uploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
@@ -85,7 +86,7 @@ export default function UserRegisterForm() {
             {(emailInput.isDirty && !emailInput.isEmail.value) && <Badge variant={'destructive'} className="text-white-1">{emailInput.isEmail.message}</Badge>}
 
           </div>
-          <FileUploader fileRef={imageRef} onChange={(e) => uploadImage(e)} isFileLoading={imageLoading} file={imageUrl}/>
+          <FileUploader fileRef={imageRef} onChange={(e) => uploadImage(e)} isFileLoading={imageLoading} file={imageUrl} isHidedImage={isHidedImage} setIsHidedImage={setIsHidedImage}/>
           <Label className="basic-label">Уже есть аккаунт?{' '}
 
             <Link 
