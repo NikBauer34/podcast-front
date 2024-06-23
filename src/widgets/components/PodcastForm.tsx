@@ -4,6 +4,7 @@ import { CreatePodcast } from "@/entities"
 import { GeneratePodcast, GenerateThumbnail } from "@/features"
 import { Badge, BaseInput, Button, Label, LoaderSpinner, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SubmitButton, Textarea, cn, useInputValidation, useToast } from "@/shared"
 import { useSession } from "next-auth/react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 let voiceCategories = ['alena', 'ermil', 'filipp', 'jane', 'madirus', 'marina', 'omazh', 'zahar']
@@ -61,7 +62,13 @@ export default function PodcastForm() {
   return (
     <section className="mt-10 flex flex-col">
       <h1 className="text-20 font-bold text-white-1">Создать подкаст</h1>
-      {!data?.user && <h1 className="text-20 font-bold text-white-1">Необходима регистрация для создания подкаста!</h1>}
+      {!data?.user && <Label className="basic-label text-20">Необходим аккаунт для создания подкаста.{' '}
+
+        <Link 
+          href='/sign-in'
+          className="underline underline-offset-4"
+        >Войдите</Link>
+        </Label>}
       <form className="mt-12 flex w-full flex-col">
         <div className="flex flex-col gap-[30px] border-b border-black-5 pb-10">
           <div className="flex flex-col gap-2.5">

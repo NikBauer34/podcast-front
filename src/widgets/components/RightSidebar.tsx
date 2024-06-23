@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { useRouter } from "next/navigation";
 import { SignedIn } from "@/features";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 export default function RightSidebar({
   user,

@@ -1,3 +1,4 @@
+
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { IUser, getTopPodcasters, getUserData } from "@/entities";
 import { getServerSession } from "next-auth";
