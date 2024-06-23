@@ -2,7 +2,7 @@
 
 import { CreatePodcast } from "@/entities"
 import { GeneratePodcast, GenerateThumbnail } from "@/features"
-import { Badge, BaseInput, Button, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SubmitButton, Textarea, cn, useInputValidation, useToast } from "@/shared"
+import { Badge, BaseInput, Button, Label, LoaderSpinner, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SubmitButton, Textarea, cn, useInputValidation, useToast } from "@/shared"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -17,7 +17,7 @@ export default function PodcastForm() {
   const [voiceType, setVoiceType] = useState<string | null>(null)
   const [voicePrompt, setVoicePrompt] = useState('')
   const {toast} = useToast()
-  const {data} = useSession()
+  const {data, status} = useSession()
   let titleInput = useInputValidation('', {isEmpty: {value: true, message: 'Название не должно быть пустым'}})
   let descriptionInput = useInputValidation('', {isEmpty: {value: true, message: 'Описание не должно быть пустым'}})
   async function onSubmit(e: any) {
@@ -55,10 +55,12 @@ export default function PodcastForm() {
       return
     }
   }
+  if (status == 'loading') {
+    return <LoaderSpinner />
+  }
   return (
     <section className="mt-10 flex flex-col">
-      <h1 className="text-20 font-bold text-white-1">Создать Подкаст</h1>
-
+      {!data?.user && <h1 className="text-20 font-bold text-white-1">Необходима регистрация для создания подкаста!</h1>}
       <form className="mt-12 flex w-full flex-col">
         <div className="flex flex-col gap-[30px] border-b border-black-5 pb-10">
           <div className="flex flex-col gap-2.5">
