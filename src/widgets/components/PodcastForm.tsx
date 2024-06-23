@@ -60,6 +60,7 @@ export default function PodcastForm() {
   }
   return (
     <section className="mt-10 flex flex-col">
+      <h1 className="text-20 font-bold text-white-1">Создать подкаст</h1>
       {!data?.user && <h1 className="text-20 font-bold text-white-1">Необходима регистрация для создания подкаста!</h1>}
       <form className="mt-12 flex w-full flex-col">
         <div className="flex flex-col gap-[30px] border-b border-black-5 pb-10">
