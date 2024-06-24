@@ -1,3 +1,5 @@
+// @ts-ignore
+export const maxDuration = 1000
 import { PodcastCard, getByTitle } from "@/entities";
 import { Searchbar, EmptyState } from "@/features";
 

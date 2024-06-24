@@ -1,3 +1,5 @@
+// @ts-ignore
+export const maxDuration = 1000
 import axios from "axios"
 import { getServerSession } from "next-auth"
 import { authOptions } from "../api/auth/[...nextauth]/route"

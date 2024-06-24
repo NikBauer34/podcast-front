@@ -1,3 +1,5 @@
+// @ts-ignore
+export const maxDuration = 1000
 import { signin } from "@/entities";
 import { $api } from "@/shared";
 import { NextAuthOptions } from "next-auth";

@@ -1,3 +1,5 @@
+// @ts-ignore
+export const maxDuration = 1000
 import { PodcastCard, ProfileCard, getPodcastsByUser, getUserById } from "@/entities";
 import { EmptyState } from "@/features";
 
