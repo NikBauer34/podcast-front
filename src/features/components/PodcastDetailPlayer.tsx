@@ -5,6 +5,7 @@ import { Button, DeleteLogo, PlayLogo, ThreeDotsLogo, useAudio, useToast } from 
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { doesNotMatch } from "assert"
 export default function PodcastDetailPlayer({
   audioUrl,
   podcastTitle,
@@ -43,6 +44,10 @@ export default function PodcastDetailPlayer({
     router.push('/')
   }
   const handlePlay = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
+    })
     setAudio({
       title: podcastTitle,
       audioUrl,
