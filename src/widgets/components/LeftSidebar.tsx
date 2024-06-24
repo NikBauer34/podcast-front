@@ -11,8 +11,8 @@ export default function LeftSidebar({status}: {status: 'authenticated' | 'unauth
   const router = useRouter()
   let {audio} = useAudio()
   return (
-    <section className={cn('left_sidebar h-[calc(100vh-0px)]', {
-      'h-[calc(100vh-15px)]': audio?.audioUrl
+    <section className={cn("left_sidebar h-[calc(100vh-5px)]", {
+      'h-[calc(100vh-140px)]': audio?.audioUrl
     })}>
       <nav className="flex flex-col gap-6 w-[200px] items-start">
         <Link href='/' className="cursor-pointer items-center gap-3 pb-10 max-lg:justify-center flex md:flex-row">
