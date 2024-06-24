@@ -1,5 +1,5 @@
 // @ts-ignore
-export const maxDuration = 1000
+export const maxDuration = 60
 export const dynamic = "force-dynamic";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { getOnePodcast, getSimilarPodcasts, updateViews } from "@/entities"
