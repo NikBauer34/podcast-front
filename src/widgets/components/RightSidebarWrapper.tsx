@@ -7,7 +7,7 @@ import RightSidebar from "./RightSidebar";
 export default async function RightSidebarWrapper() {
   const session = await getServerSession(authOptions)
   const token = session?.user?.accessToken
-  let user: IUser | string = await getUserData(token) 
+  let user: IUser | string = token === undefined ? 'str' : await getUserData(token)
   const topPodcasters = await getTopPodcasters()
   console.log(user)
 
