@@ -33,6 +33,11 @@ export default function UserRegisterForm() {
       alert(filename)
     }
     setImageLoading(false)
+    if (!imageUrl) {
+      toast({
+        title: 'Если изображение не загрузилось, повторите попытку'
+      })
+    }
   }
   let router = useRouter()
   async function onSubmit(e: React.SyntheticEvent) {
