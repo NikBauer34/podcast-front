@@ -14,7 +14,7 @@ export default function UserRegisterForm() {
   let emailInput = useInputValidation('', {isEmail: {value: false, message: 'Напиши нормальную почту'}})
   let [loading, setLoading] = useState(false)
   let [serverError, setServerError] = useState('')
-  let [imageUrl, setImageUrl] = useState('https://unilib-storage.storage.yandexcloud.net/test/a1074fdc-a146-4c5f-99c3-aedadd7c83f9.jpg')
+  let [imageUrl, setImageUrl] = useState('')
   let [imageLoading, setImageLoading] = useState(false)
   let {toast} = useToast()
   let [isHidedImage, setIsHidedImage] = useState(false)
@@ -91,7 +91,7 @@ export default function UserRegisterForm() {
             {(emailInput.isDirty && !emailInput.isEmail.value) && <Badge variant={'destructive'} className="text-white-1">{emailInput.isEmail.message}</Badge>}
 
           </div>
-          {/* <FileUploader fileRef={imageRef} onChange={(e) => uploadImage(e)} isFileLoading={imageLoading} file={imageUrl} isHidedImage={isHidedImage} setIsHidedImage={setIsHidedImage}/> */}
+          <FileUploader fileRef={imageRef} onChange={(e) => uploadImage(e)} isFileLoading={imageLoading} file={imageUrl} isHidedImage={isHidedImage} setIsHidedImage={setIsHidedImage}/>
           <Label className="basic-label">Уже есть аккаунт?{' '}
 
             <Link 
